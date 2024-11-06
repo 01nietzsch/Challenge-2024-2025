@@ -1,0 +1,37 @@
+On average, the natural environment contributes 8% of the total estimated expenditure on all tourism and outdoor leisure related activities within Great Britain.
+
+Annual contribution of the natural environment to tourism ad outdoor leisure, £ million (2019 prices), Great Britain, 2011 to 2019
+
+Year Country Amount
+2011 England 7273
+2011 Scotland 1677
+2011 Wales 681
+2012 England 7228
+2012 Scotland 1433
+2012 Wales 1025
+2013 England 6592
+2013 Scotland 1179
+2013 Wales 1011
+2014 England 7294
+2014 Scotland 1463
+2014 Wales 584
+2015 England 8376
+2015 Scotland 1233
+2015 Wales 606
+2016 England 8172
+2016 Scotland 1948
+2016 Wales 509
+2017 England 5584
+2017 Scotland 991
+2017 Wales 838
+2018 England 8647
+2018 Scotland 769
+2018 Wales 835
+2019 England 9430
+2019 Scotland 748
+2019 Wales 432
+
+Source: Office for National Statistics, Great Britain Tourism Survey and Great Britain Day Visits Survey
+
+Notes:
+Some data couldn’t be apportioned to England, Scotland or Wales, leading to it being included only within estimates of Great Britain. This explains why the sum of England, Scotland and Wales are less than Great Britain.

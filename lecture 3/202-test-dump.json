@@ -1,0 +1,24 @@
+{
+  "Brian": {
+    "kind": "dog",
+    "colour": "white",
+    "owner": "Peter",
+    "collar": "red"
+  },
+  "Peter": {
+    "kind": "human",
+    "nationality": "American",
+    "marital_status": "Married",
+    "gender": "male"
+  },
+  "Lois": {
+    "kind": "human",
+    "marital_status": "Married",
+    "nationality": "American",
+    "gender": "female",
+    "hair": {
+      "colour": "red",
+      "length": "medium"
+    }
+  }
+}
