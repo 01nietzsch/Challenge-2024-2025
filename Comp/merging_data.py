@@ -56,8 +56,8 @@ def parse_composition_string(composition_string):
     data = {'Composition String': [composition_string]}
     data.update({element: [weight_percentages[element]] for element in weight_percentages})
     df_weight_percentages = pd.DataFrame(data)
-    # drop the column "Fe"
-    df_weight_percentages = df_weight_percentages.drop(columns=['fe'])
+    # # drop the column "Fe"
+    # df_weight_percentages = df_weight_percentages.drop(columns=['fe'])
 
     return df_weight_percentages
 
@@ -76,8 +76,9 @@ for string in df['formula']:
 # all_weight_percentages.to_excel('weight_percentages.xlsx', index=False)
 
 # rearrange the columns as follow : Composition String, c,	mn	,si	,cr	,ni	,mo	,v	,n	,nb	,co	,w	,al	,ti
-all_weight_percentages = all_weight_percentages[['Composition String', 'c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']]
-
+all_weight_percentages = all_weight_percentages[['Composition String', 'fe','c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']]
+fe_column = all_weight_percentages['fe']
+all_weight_percentages = all_weight_percentages.drop(columns=['fe'])
 # Read the original file and the new file
 df2 = pd.read_excel('weight_percentages2.xlsx')
 
@@ -95,6 +96,11 @@ for col in df3.columns:
 
 # Drop '_new' columns if not needed
 df3 = df3[[col for col in df3.columns if not col.endswith('_new')]]
+
+# add the fe column to the new DataFrame
+df3['fe'] = fe_column
+df3 = df3[['formula', 'fe','c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']]
+
 
 # Save the result to a new Excel file
 df3.to_excel('merged_file.xlsx', index=False)
