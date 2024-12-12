@@ -4,16 +4,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.impute import SimpleImputer
 path = r"C:\Users\vladimir jurien\OneDrive - Imperial College London\Imperial\Y2\Steel Challenge\Challenge-2024-2025\Comp\\"
-# Load the data
-data = pd.read_excel(path +'merged_file.xlsx').copy()
 
-# Extract compositional elements
-comp_columns = ['c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']
+# Here we dont consider 
+comp_columns = ['fe','c','mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']
 
 # Identify mechanical properties
 mech_properties = ['yield strength', 'tensile strength', 'elongation']
 
-
+data =pd.read_excel(path + 'normalized_file_complete.xlsx')
 
 # Function to impute missing values using k-nearest neighbors
 def impute_with_knn(df, k=5):
