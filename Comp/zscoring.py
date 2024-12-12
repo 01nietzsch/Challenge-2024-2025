@@ -34,8 +34,10 @@ def classify_strength(elongation):
         return "Fragile"
     elif 5 <= elongation <= 10:
         return "Medium"
-    else:
+    elif elongation > 10 :
         return "Strong"
+    else:
+        return "Unknown"
     
 #TEMPORARY FILE PATH (The merged file doesn't have the properties data)
 data_with_properties = pd.read_excel(path + "database_steel_properties.xlsx") 
