@@ -17,14 +17,7 @@ inputs = data[['fe', 'c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w
 scaler = StandardScaler()
 normalized_inputs = scaler.fit_transform(inputs)
 normalized_data = pd.DataFrame(normalized_inputs, columns=inputs.columns)
-# i dont want to save the data i keep locally
-# output_file = '/Users/damasomatheus/Desktop/Damaso\'s Stuff/Imperial/Materials/Year 2/MATE50001/coding challenge 24/Challenge-2024-2025/Comp/normalized_file.xlsx'
-# normalized_data.to_excel(output_file, index=False)
-print(normalized_data.head())
 
-#verify normalissation worked
-print(normalized_data.mean())  # Should be close to 0 for all columns
-print(normalized_data.std())  # Should be close to 1 for all columns
 
 #ENCODING (label) - ordinal
 
@@ -38,6 +31,9 @@ def classify_strength(elongation):
         return "Strong"
     else:
         return "Unknown"
+
+
+
     
 #TEMPORARY FILE PATH (The merged file doesn't have the properties data)
 data_with_properties = pd.read_excel(path + "database_steel_properties.xlsx") 
