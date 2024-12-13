@@ -8,15 +8,15 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Step 1: Load the data
-file_path = "/path_to_your_combined_file.xlsx"  # Replace with your file path
+file_path = "/Users/damasomatheus/Desktop/Damaso\'s Stuff/Imperial/Materials/Year 2/MATE50001/coding challenge 24/Challenge-2024-2025/final_steel_data.xlsx"  # Replace with your file path
 data = pd.read_excel(file_path)
 
 # Features (standardized compositions)
 X = data[['fe', 'c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']]
 
 # Targets (unchanged properties)
-y_tensile = data['tensile_strength']
-y_yield = data['yield_strength']
+y_tensile = data['tensile strength']
+y_yield = data['yield strength']
 y_elongation = data['elongation']
 
 # Step 2: Split the data into training and testing sets
