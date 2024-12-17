@@ -1,6 +1,7 @@
-#THIS FILE WILL HAVE STEPS 4, 5 AND 6
+#THIS FILE WILL HAVE STEP 4
 
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
@@ -18,6 +19,8 @@ if who == 'vlad':
 else:
     path = path_damaso
 data = pd.read_excel(path)
+data = data[data['strength_rating'] != 'Unknown'] # Remove rows with unknown strength rating
+
 
 #Inputs (standardized compositions)
 X = data[['fe', 'c', 'mn', 'si', 'cr', 'ni', 'mo', 'v', 'n', 'nb', 'co', 'w', 'al', 'ti']]
@@ -29,41 +32,51 @@ targets = {
     "Elongation": data['elongation']
 }
 
-#Split data and train models for each output
+#Define regression models
 RANDOM_STATE = 42
 TEST_SIZE = 0.2
-r2_results = {}
 models = {
     "Linear Regression": LinearRegression(),
     "Ridge Regression": Ridge(),
     "Lasso Regression": Lasso(),
     "Random Forest Regression": RandomForestRegressor(n_estimators=100, random_state=RANDOM_STATE),
-    "Decision Tree Regression": DecisionTreeRegressor(),
+    "Decision Tree Regression": DecisionTreeRegressor(random_state=RANDOM_STATE),
 }
 
-#Test models of each property
+#Initialize dictionary to store R² results
+r2_results = {target_name: {} for target_name in targets.keys()}
+
+#Train models and gather results
 for target_name, y in targets.items():
     print(f"\n--- Training models for {target_name} ---")
-    
-    # Split the data
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE)
     
-    # Train and evaluate each model
     for model_name, model in models.items():
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
-        
-        # Calculate R² and MSE
         r2 = r2_score(y_test, y_pred)
         mse = mean_squared_error(y_test, y_pred)
+        r2_results[target_name][model_name] = r2  # Store R² score
         
-        # Print results
         print(f"{model_name}: R² = {r2:.4f}, MSE = {mse:.2f}")
 
-#Plot conclusions (ie random forest is best)
-plt.figure(figsize=(10, 6))
-plt.bar(r2_results.keys(), r2_results.values(), color='skyblue')
-plt.ylabel("R² Score")
-plt.title(f"Model Comparison (R²) for {target_name}")
-plt.xticks(rotation=45)
+#Plot R² scores for all targets and models
+fig, ax = plt.subplots(figsize=(12, 8))
+x = np.arange(len(models))  # Positions for bars
+
+bar_width = 0.25  # Width of each group of bars
+
+#Plot bars for each target property
+for i, (target_name, r2_scores) in enumerate(r2_results.items()):
+    r2_values = list(r2_scores.values())
+    ax.bar(x + i * bar_width, r2_values, bar_width, label=target_name)
+
+#Customizations
+ax.set_xticks(x + bar_width)
+ax.set_xticklabels(models.keys(), rotation=45, ha='right')
+ax.set_ylabel("R² Score")
+ax.set_title("Model Comparison (R² Scores) for All Target Properties")
+ax.legend(title="Target Property")
+
+plt.tight_layout()
 plt.show()
