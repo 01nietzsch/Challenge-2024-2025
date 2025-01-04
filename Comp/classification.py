@@ -1,5 +1,6 @@
 #THIS FILE WILL HAVE STEP 5
 
+import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -68,3 +69,24 @@ for model_name, model in models.items():
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
     plt.show()
+
+# Train and Save Best Classifier
+best_classifier = None
+best_accuracy = float("-inf")
+
+for model_name, model in models.items():
+    print(f"\n--- {model_name} ---")
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    
+    # Evaluate accuracy
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f"Accuracy: {accuracy:.4f}")
+    
+    if accuracy > best_accuracy:
+        best_accuracy = accuracy
+        best_classifier = model
+
+# Save the best classifier to a file
+joblib.dump(best_classifier, "elongation_classifier.pkl")
+print("\nBest classifier saved for elongation!")

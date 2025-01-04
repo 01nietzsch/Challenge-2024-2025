@@ -1,5 +1,6 @@
 #THIS FILE WILL HAVE STEP 4
 
+import joblib
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -80,3 +81,29 @@ ax.legend(title="Target Property")
 
 plt.tight_layout()
 plt.show()
+
+# Train and Save Best Models
+best_models = {}
+for target_name, y in targets.items():
+    print(f"\n--- Training models for {target_name} ---")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE)
+    
+    best_model = None
+    best_r2 = float("-inf")
+    for model_name, model in models.items():
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+        r2 = r2_score(y_test, y_pred)
+        mse = mean_squared_error(y_test, y_pred)
+        print(f"{model_name}: R² = {r2:.4f}, MSE = {mse:.2f}")
+        
+        # Save the best model
+        if r2 > best_r2:
+            best_r2 = r2
+            best_model = model
+
+    # Save the best model to a file
+    joblib.dump(best_model, f"{target_name.replace(' ', '_').lower()}_regressor.pkl")
+    best_models[target_name] = best_model
+
+print("\nBest models saved for each target property!")
