@@ -68,6 +68,7 @@ for model_name, model in models.items():
     plt.title(f"Confusion Matrix for {model_name}")
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
+    plt.savefig(f"confusion_matrix_{model_name}.png")
     plt.show()
 
 # Train and Save Best Classifier
