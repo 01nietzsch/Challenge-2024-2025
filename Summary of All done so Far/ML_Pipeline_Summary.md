@@ -44,9 +44,11 @@
 ### Results (Key Graphs)
 
 - **MSE Comparison**:
-  ![MSE Comparison](./mse.png)
+  ![MSE Comparison](./mse_comparison_step4.png)
+  *Comparison of Mean Squared Error (MSE) for different regression models.*
 - **R² Comparison**:
-  ![R² Comparison](./r².png)
+  ![R² Comparison](./r2_comparison_step4.png)
+  *Comparison of R² scores for different regression models.*
 
 ### Observations
 
@@ -70,18 +72,21 @@
 
 ### Evaluation Metrics
 
-- **Accuracy**: Percentage of correctly classified samples.
+- **Accuracy**: Measures the proportion of correctly classified instances.
+- **Classification Report**: Provides precision, recall, and F1-score for each class.
 - **Confusion Matrix**: Visualizes model performance across classes.
-- **Classification Report**: Summarizes precision, recall, and F1-scores.
 
 ### Results (Key Graphs)
 
 - **Confusion Matrix (k-NN)**:
   ![Confusion Matrix - k-NN](./confusion_matrix_k-Nearest%20Neighbors.png)
+  *Confusion Matrix for k-Nearest Neighbors.*
 - **Confusion Matrix (Logistic Regression)**:
   ![Confusion Matrix - Logistic Regression](./confusion_matrix_Logistic%20Regression.png)
+  *Confusion Matrix for Logistic Regression.*
 - **Confusion Matrix (Random Forest)**:
-  ![Confusion Matrix - Random Forest](./confusion_matrix_Random%20Forest%20Classifier.png)
+  ![Confusion Matrix - Random Forest](./confusion_matrix_rf.jpg)
+  *Confusion Matrix for Random Forest Classifier.*
 
 ### Observations
 
@@ -126,6 +131,27 @@
 - **Accuracy**: Random Forest outperformed other models with a stable and high accuracy score.
 - **Uncertainty**: Cross-validation results indicated low variance, confirming model stability.
 - Although Random Forest performed best, it failed to detect any fragile samples and made errors, it showed a high bias, thus we used logistic regression which was able to idenitfy weak and strong samples.
+
+---
+
+## Optimized Compositions
+
+### Graphs
+
+- **Optimized Compositions: Ni vs Co**:
+  ![Optimized Compositions: Ni vs Co](./optimized_compositions_ni_vs_co.png)
+  *Scatter plot of optimized compositions showing Nickel (Ni) vs Cobalt (Co) content. This graph highlights the compositions that have been optimized to minimize the content of Nickel and Cobalt while maintaining high strength properties.*
+- **Nickel Content vs. Predicted Strengths**:
+  ![Nickel Content vs. Predicted Strengths](./nickel_content_vs_strengths.png)
+  *Scatter plot of Nickel content vs. predicted tensile and yield strengths. This graph shows the relationship between Nickel content and the predicted mechanical properties, indicating that lower Nickel content can still achieve high strength.*
+- **Cobalt Content vs. Predicted Strengths**:
+  ![Cobalt Content vs. Predicted Strengths](./cobalt_content_vs_strengths.png)
+  *Scatter plot of Cobalt content vs. predicted tensile and yield strengths. This graph illustrates the impact of Cobalt content on the predicted mechanical properties, demonstrating that it is possible to achieve high strength with minimal Cobalt content.*
+
+### Observations
+
+- **Key Features**: The optimized compositions successfully minimize the use of Nickel and Cobalt while maintaining high tensile and yield strengths. The scatter plots show that it is possible to achieve strong materials with lower amounts of these expensive and critical elements.
+- **Best Compositions**: The top candidates identified through this optimization process are those that balance the mechanical properties with the minimal use of Nickel and Cobalt, making them cost-effective and sustainable choices for steel production.
 
 ---
 
