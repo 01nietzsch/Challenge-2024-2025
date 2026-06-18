@@ -1,0 +1,88 @@
+{
+  "regression": {
+    "tensile_strength": {
+      "linear_regression": {
+        "r2": 0.33340160101620375,
+        "mse": 67369.75858075872
+      },
+      "ridge_regression": {
+        "r2": 0.35535827260258834,
+        "mse": 65150.70785056382
+      },
+      "lasso_regression": {
+        "r2": 0.39607182962733467,
+        "mse": 61035.99273588232
+      },
+      "random_forest_regression": {
+        "r2": 0.8992698705846093,
+        "mse": 10180.28922791999
+      },
+      "decision_tree_regression": {
+        "r2": 0.6277006856282459,
+        "mse": 37626.4253968254
+      },
+      "best_model": "random_forest_regression"
+    },
+    "yield_strength": {
+      "linear_regression": {
+        "r2": -0.30022330530760666,
+        "mse": 86133.40821719823
+      },
+      "ridge_regression": {
+        "r2": -0.25657591914343536,
+        "mse": 83241.9832483135
+      },
+      "lasso_regression": {
+        "r2": -0.20124188841675617,
+        "mse": 79576.37547353478
+      },
+      "random_forest_regression": {
+        "r2": 0.80276278627997,
+        "mse": 13065.996721963793
+      },
+      "decision_tree_regression": {
+        "r2": 0.6124499133641871,
+        "mse": 25673.28987301588
+      },
+      "best_model": "random_forest_regression"
+    },
+    "elongation": {
+      "linear_regression": {
+        "r2": -0.4716926806760664,
+        "mse": 34.260679304914596
+      },
+      "ridge_regression": {
+        "r2": -0.4408986275428568,
+        "mse": 33.54380057557911
+      },
+      "lasso_regression": {
+        "r2": 0.05245997750470399,
+        "mse": 22.05852163671146
+      },
+      "random_forest_regression": {
+        "r2": 0.6296953270947766,
+        "mse": 8.620610681904765
+      },
+      "decision_tree_regression": {
+        "r2": 0.5051703813438988,
+        "mse": 11.519523809523811
+      },
+      "best_model": "random_forest_regression"
+    }
+  },
+  "classification": {
+    "k_nearest_neighbors": {
+      "accuracy": 0.873015873015873,
+      "confusion_matrix": "/home/runner/work/Challenge-2024-2025/Challenge-2024-2025/reports/figures/confusion_matrix_k_nearest_neighbors.png"
+    },
+    "random_forest_classifier": {
+      "accuracy": 0.873015873015873,
+      "confusion_matrix": "/home/runner/work/Challenge-2024-2025/Challenge-2024-2025/reports/figures/confusion_matrix_random_forest_classifier.png"
+    },
+    "logistic_regression": {
+      "accuracy": 0.7777777777777778,
+      "confusion_matrix": "/home/runner/work/Challenge-2024-2025/Challenge-2024-2025/reports/figures/confusion_matrix_logistic_regression.png"
+    },
+    "best_model": "k_nearest_neighbors"
+  }
+}

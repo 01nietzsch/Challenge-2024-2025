@@ -41,6 +41,9 @@ def _load_raw_dataset() -> pd.DataFrame:
     data = pd.read_csv(RAW_DATASET)
     data.columns = [col.strip().lower() for col in data.columns]
     if "formula" not in data.columns:
+        data = pd.read_csv(RAW_DATASET, skiprows=1)
+        data.columns = [col.strip().lower() for col in data.columns]
+    if "formula" not in data.columns:
         raise ValueError("Raw dataset must contain a 'formula' column")
     return data
 
